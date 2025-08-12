@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/my-avatar2.png" type="image/x-icon">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /*-----------------------------------*\
+      #CUSTOM PROPERTY
+    \*-----------------------------------*/
+
+    :root {
+
+      /**
+       * colors
+       */
+
+      /* gradient */
+
+      --bg-gradient-onyx: linear-gradient(
+        to bottom right, 
+        hsl(240, 1%, 25%) 3%, 
+        hsl(0, 0%, 19%) 97%
+      );
+      --bg-gradient-jet: linear-gradient(
+        to bottom right, 
+        hsla(240, 1%, 18%, 0.251) 0%, 
+        hsla(240, 2%, 11%, 0) 100%
+      ), hsl(240, 2%, 13%);
+      --bg-gradient-yellow-1: linear-gradient(
+        to bottom right, 
+        hsl(45, 100%, 71%) 0%, 
+        hsla(36, 100%, 69%, 0) 50%
+      );
+      --bg-gradient-yellow-2: linear-gradient(
+        135deg, 
+        hsla(45, 100%, 71%, 0.251) 0%, 
+        hsla(35, 100%, 68%, 0) 59.86%
+      ), hsl(240, 2%, 13%);
+      --border-gradient-onyx: linear-gradient(
+        to bottom right, 
+        hsl(0, 0%, 25%) 0%, 
+        hsla(0, 0%, 25%, 0) 50%
+      );
+      --text-gradient-yellow: linear-gradient(
+        to right, 
+        hsl(45, 100%, 72%), 
+        hsl(35, 100%, 68%)
+      );
+
+      /* solid */
+
+      --jet: hsl(0, 0%, 22%);
+      --onyx: hsl(240, 1%, 17%);
+      --eerie-black-1: hsl(240, 2%, 13%);
+      --eerie-black-2: hsl(240, 2%, 12%);
+      --smoky-black: hsl(0, 0%, 7%);
+      --white-1: hsl(0, 0%, 100%);
+      --white-2: hsl(0, 0%, 98%);
+      --orange-yellow-crayola: hsl(45, 100%, 72%);
+      --vegas-gold: hsl(45, 54%, 58%);
+      --light-gray: hsl(0, 0%, 84%);
+      --light-gray-70: hsla(0, 0%, 84%, 0.7);
+      --bittersweet-shimmer: hsl(0, 43%, 51%);
+
+      /* font-family */
+      --ff-poppins: 'Poppins', sans-serif;
+
+      /* font-size */
+      --fs-1: 24px;
+      --fs-2: 18px;
+      --fs-3: 17px;
+      --fs-4: 16px;
+      --fs-5: 15px;
+      --fs-6: 14px;
+      --fs-7: 13px;
+      --fs-8: 11px;
+
+      /* font-weight */
+      --fw-300: 300;
+      --fw-400: 400;
+      --fw-500: 500;
+      --fw-600: 600;
+
+      /**
+       * shadow
+       */
+      
+      --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+      --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+      --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
+      --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
+      --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+
+      /**
+       * transition
+       */
+
+      --transition-1: 0.25s ease;
+      --transition-2: 0.5s ease-in-out;
+
+    }
+
+    /*-----------------------------------*\
+      #RESET
+    \*-----------------------------------*/
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a { text-decoration: none; }
+
+    li { list-style: none; }
+
+    img, ion-icon, a, button, time, span { display: block; }
+
+    button {
+      font: inherit;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    input, textarea {
+      display: block;
+      width: 100%;
+      background: none;
+      font: inherit;
+    }
+
+    ::selection {
+      background: var(--orange-yellow-crayola);
+      color: var(--smoky-black);
+    }
+
+    :focus { outline-color: var(--orange-yellow-crayola); }
+
+    html { font-family: var(--ff-poppins); }
+
+    body { background: var(--smoky-black); }
+
+    /*-----------------------------------*\
+      #REUSED STYLE
+    \*-----------------------------------*/
+
+    .sidebar,
+    article {
+      background: var(--eerie-black-2);
+      border: 1px solid var(--jet);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: var(--jet);
+      margin: 16px 0;
+    }
+
+    .icon-box {
+      position: relative;
+      background: var(--border-gradient-onyx);
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: var(--orange-yellow-crayola);
+      box-shadow: var(--shadow-1);
+      z-index: 1;
+    }
+
+    .icon-box::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: var(--eerie-black-1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .icon-box ion-icon { --ionicon-stroke-width: 35px; }
+
+    /* CRITICAL: Article visibility styles */
+    article { 
+      display: none; 
+    }
+
+    article.active {
+      display: block !important;
+      animation: fade 0.5s ease backwards;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .h2,
+    .h3,
+    .h4,
+    .h5 {
+      color: var(--white-2);
+      text-transform: capitalize;
+    }
+
+    .h2 { font-size: var(--fs-1); }
+
+    .h3 { font-size: var(--fs-2); }
+
+    .h4 { font-size: var(--fs-4); }
+
+    .h5 {
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+    }
+
+    .article-title {
+      position: relative;
+      padding-bottom: 7px;
+    }
+
+    .article-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 3px;
+      background: var(--text-gradient-yellow);
+      border-radius: 3px;
+    }
+
+    /*-----------------------------------*\
+      #MAIN
+    \*-----------------------------------*/
+
+    main {
+      margin: 15px 12px;
+      margin-bottom: 75px;
+      min-width: 259px;
+    }
+
+    /*-----------------------------------*\
+      #SIDEBAR
+    \*-----------------------------------*/
+
+    .sidebar {
+      margin-bottom: 15px;
+      max-height: 112px;
+      overflow: hidden;
+      transition: var(--transition-2);
+    }
+
+    .sidebar.active { max-height: 405px; }
+
+    .sidebar-info {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .avatar-box {
+      background: var(--bg-gradient-onyx);
+      border-radius: 20px;
+    }
+
+    .info-content .name {
+      color: var(--white-2);
+      font-size: var(--fs-3);
+      font-weight: var(--fw-500);
+      letter-spacing: -0.25px;
+      margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        white-space: normal;
+        overflow: visible;
+      }
+
+    .info-content .title {
+      color: var(--white-1);
+      background: var(--onyx);
+      font-size: var(--fs-8);
+      font-weight: var(--fw-300);
+        width: 100%;
+      padding: 3px 12px;
+      border-radius: 8px;
+        text-align: left;
+        white-space: normal;
+        overflow: visible;
+    }
+
+    .info_more-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      border-radius: 0 15px;
+      font-size: 13px;
+      color: var(--orange-yellow-crayola);
+      background: var(--border-gradient-onyx);
+      padding: 10px;
+      box-shadow: var(--shadow-2);
+      transition: var(--transition-1);
+      z-index: 1;
+    }
+
+    .info_more-btn::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: var(--bg-gradient-jet);
+      transition: var(--transition-1);
+      z-index: -1;
+    }
+
+    .info_more-btn:hover,
+    .info_more-btn:focus { background: var(--bg-gradient-yellow-1); }
+
+    .info_more-btn:hover::before,
+    .info_more-btn:focus::before { background: var(--bg-gradient-yellow-2); }
+
+    .info_more-btn span { display: none; }
+
+    .sidebar-info_more {
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-2);
+    }
+
+    .sidebar.active .sidebar-info_more {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .contacts-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .contact-item {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-info {
+      max-width: calc(100% - 46px);
+      width: calc(100% - 46px);
+    }
+
+    .contact-title {
+      color: var(--light-gray-70);
+      font-size: var(--fs-8);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .contact-info :is(.contact-link, time, address) {
+      color: var(--white-2);
+      font-size: var(--fs-7);
+    }
+
+    .contact-info address { font-style: normal; }
+
+    .social-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 4px;
+      padding-left: 7px;
+    }
+
+    .social-item .social-link {
+      color: var(--light-gray-70);
+      font-size: 18px;
+    }
+
+    .social-item .social-link:hover { color: var(--light-gray); }
+
+    /*-----------------------------------*\
+      #NAVBAR
+    \*-----------------------------------*/
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: hsla(240, 1%, 17%, 0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--jet);
+      border-radius: 12px 12px 0 0;
+      box-shadow: var(--shadow-2);
+      z-index: 5;
+    }
+
+    .navbar-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .navbar-link {
+      color: var(--light-gray);
+      font-size: var(--fs-8);
+      padding: 20px 7px;
+      transition: color var(--transition-1);
+    }
+
+    .navbar-link:hover,
+    .navbar-link:focus { color: var(--light-gray-70); }
+
+    .navbar-link.active { color: var(--orange-yellow-crayola); }
+
+    /*-----------------------------------*\
+      #ABOUT
+    \*-----------------------------------*/
+
+    .about .article-title { margin-bottom: 15px; }
+
+    .about-text {
+      color: var(--light-gray);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+      line-height: 1.6;
+    }
+
+    .about-text p { margin-bottom: 15px; }
+
+    /**
+     * #service 
+     */
+
+    .service { margin-bottom: 35px; }
+
+    .service-title { margin-bottom: 20px; }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .service-item {
+      position: relative;
+      background: var(--border-gradient-onyx);
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-2);
+      z-index: 1;
+    }
+
+    .service-item::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: var(--bg-gradient-jet);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    .service-icon-box { margin-bottom: 10px; }
+
+    .service-icon-box img { margin: auto; }
+
+    .service-content-box { text-align: center; }
+
+    .service-item-title { margin-bottom: 7px; }
+
+    .service-item-text {
+      color: var(--light-gray);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-3);
+      line-height: 1.6;
+    }
+
+    /**
+     * #clients 
+     */
+
+    .Company { margin-bottom: 15px; }
+
+    .clients-title { margin-bottom: 20px; }
+
+    .clients-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 15px;
+      margin: 0 -15px;
+      padding: 25px;
+      padding-bottom: 25px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .clients-item {
+      min-width: 50%;
+    }
+
+    .clients-item img {
+      width: 100%;
+      filter: grayscale(1);
+      transition: var(--transition-1);
+    }
+
+    .clients-item img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    .clients-item-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: grayscale(1);
+      transition: var(--transition-1);
+    }
+
+    .clients-item-img:hover {
+      filter: grayscale(0);
+    }
+
+    /*-----------------------------------*\
+      #RESUME
+    \*-----------------------------------*/
+
+    .timeline { margin-bottom: 30px; }
+
+    .timeline .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .timeline-list {
+      font-size: var(--fs-6);
+      margin-left: 45px;
+    }
+
+    .timeline-item { position: relative; }
+
+    .timeline-item:not(:last-child) { margin-bottom: 20px; }
+
+    .timeline-item-title {
+      font-size: var(--fs-6);
+      line-height: 1.3;
+      margin-bottom: 7px;
+    }
+
+    .timeline-list span {
+      color: var(--vegas-gold);
+      font-weight: var(--fw-400);
+      line-height: 1.6;
+    }
+
+    .timeline-item:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: -30px;
+      width: 1px;
+      height: calc(100% + 50px);
+      background: var(--jet);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: -33px;
+      height: 6px;
+      width: 6px;
+      background: var(--text-gradient-yellow);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--jet);
+    }
+
+    .timeline-text {
+      color: var(--light-gray);
+      font-weight: var(--fw-300);
+      line-height: 1.6;
+    }
+
+    /**
+     * skills 
+     */
+
+    .skills-title { margin-bottom: 20px; }
+
+    .skills-list { padding: 20px; }
+
+    .skills-item:not(:last-child) { margin-bottom: 15px; }
+
+    .skill .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .skill .title-wrapper data {
+      color: var(--light-gray);
+      font-size: var(--fs-7);
+      font-weight: var(--fw-300);
+    }
+
+    .skill-progress-bg {
+      background: var(--jet);
+      width: 100%;
+      height: 8px;
+      border-radius: 10px;
+    }
+
+    .skill-progress-fill {
+      background: var(--text-gradient-yellow);
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .content-card {
+      position: relative;
+      background: var(--border-gradient-onyx);
+      padding: 15px;
+      padding-top: 45px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-2);
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .content-card::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: var(--bg-gradient-jet);
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    /*-----------------------------------*\
+      #PORTFOLIO
+    \*-----------------------------------*/
+
+    .filter-list { display: none; }
+
+    .filter-select-box {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .filter-select {
+      background: var(--eerie-black-2);
+      color: var(--light-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--jet);
+      border-radius: 14px;
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+    }
+
+    .filter-select.active .select-icon { transform: rotate(0.5turn); }
+
+    .select-list {
+      background: var(--eerie-black-2);
+      position: absolute;
+      top: calc(100% + 6px);
+      width: 100%;
+      padding: 6px;
+      border: 1px solid var(--jet);
+      border-radius: 14px;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.15s ease-in-out;
+    }
+
+    .filter-select.active + .select-list {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .select-item button {
+      background: var(--eerie-black-2);
+      color: var(--light-gray);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+      text-transform: capitalize;
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .select-item button:hover { --eerie-black-2: hsl(240, 2%, 20%); }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 10px;
+    }
+
+    .project-item { display: none; }
+
+    .project-item.active {
+      display: block;
+      animation: scaleUp 0.25s ease forwards;
+    }
+
+    @keyframes scaleUp {
+      0% { transform: scale(0.5); }
+      100% { transform: scale(1); }
+    }
+
+    .project-item > a { width: 100%; }
+
+    .project-img {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .project-img::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 1;
+      transition: var(--transition-1);
+    }
+
+    .project-item > a:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
+
+    .project-item-icon-box {
+      --scale: 0.8;
+
+      background: var(--jet);
+      color: var(--orange-yellow-crayola);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(var(--scale));
+      font-size: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      opacity: 0;
+      z-index: 1;
+      transition: var(--transition-1);
+    }
+
+    .project-item > a:hover .project-item-icon-box {
+      --scale: 1;
+      opacity: 1;
+    }
+
+    .project-item-icon-box ion-icon { --ionicon-stroke-width: 50px; }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-1);
+    }
+
+    .project-item > a:hover img { transform: scale(1.1); }
+
+    .project-title,
+    .project-category { margin-left: 10px; }
+
+    .project-title {
+      color: var(--white-2);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-400);
+      text-transform: capitalize;
+      line-height: 1.3;
+    }
+
+    .project-category {
+      color: var(--light-gray-70);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-300);
+    }
+
+    /*-----------------------------------*\
+      #CONTACT
+    \*-----------------------------------*/
+
+    .mapbox {
+      position: relative;
+      height: 250px;
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      border: 1px solid var(--jet);
+      overflow: hidden;
+    }
+
+    .mapbox figure { height: 100%; }
+
+    .mapbox iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(1) invert(1);
+    }
+
+    .contact-info {
+      margin-bottom: 15px;
+    }
+
+    .contact-title {
+      color: var(--light-gray-70);
+      font-size: var(--fs-8);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .contact-link {
+      color: var(--white-2);
+      font-size: var(--fs-7);
+    }
+
+    .linkedin-info {
+      margin-bottom: 15px;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 580px) {
+      .sidebar, article {
+        width: 520px;
+        margin-inline: auto;
+        padding: 30px;
+      }
+
+      main {
+        margin-top: 60px;
+        margin-bottom: 100px;
+      }
+
+      .sidebar {
+        max-height: 180px;
+        margin-bottom: 30px;
+      }
+
+      .sidebar.active { max-height: 584px; }
+    }
+
+    @media (min-width: 768px) {
+      .sidebar, article { width: 700px; }
+
+      .filter-select-box { display: none; }
+
+      .filter-list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 25px;
+        padding-left: 5px;
+        margin-bottom: 30px;
+      }
+
+      .filter-item button {
+        color: var(--light-gray);
+        font-size: var(--fs-5);
+        transition: var(--transition-1);
+      }
+
+      .filter-item button:hover { color: var(--light-gray-70); }
+
+      .filter-item button.active { color: var(--orange-yellow-crayola); }
+
+      .project-list { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .sidebar, article {
+        width: 950px;
+        box-shadow: var(--shadow-5);
+      }
+
+      .navbar {
+        position: absolute;
+        bottom: auto;
+        top: 0;
+        left: auto;
+        right: 0;
+        width: max-content;
+        border-radius: 0 20px;
+        padding: 0 20px;
+        box-shadow: none;
+      }
+
+      .navbar-list {
+        gap: 30px;
+        padding: 0 20px;
+      }
+
+      .navbar-link { font-weight: var(--fw-500); }
+
+      .project-list { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1250px) {
+      main {
+        max-width: 1200px;
+        margin-inline: auto;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 25px;
+      }
+
+      .main-content {
+        min-width: 75%;
+        width: 75%;
+        margin: 0;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 60px;
+        max-height: max-content;
+        height: 100%;
+        margin-bottom: 0;
+        padding-top: 60px;
+        z-index: 1;
+      }
+
+      .sidebar-info { flex-direction: column; }
+
+      .info_more-btn { display: none; }
+
+      .sidebar-info_more {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .contacts-list { grid-template-columns: 1fr; }
+
+      .social-list { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar2.png" alt="Luo Feng" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="luofeng">Luo Feng</h1>
+          <p class="title">Cyber Offensive &amp; Operational Technology (COPT)</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:luofeng.24@ichat.sp.edu.sg" class="contact-link">luofeng.24@ichat.sp.edu.sg</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Singapore</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/chan-luo-feng-647425246/" class="social-link">
+              <img src="./assets/images/linkedin_circle_gray-512.webp" alt="LinkedIn" style="width: 25px; height: 25px;">
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/whoisclf/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/Justclf" class="social-link">
+              <img src="./assets/images/icone-github-grise.png" alt="Github" style="width: 25px; height: 24px;">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a highly motivated student currently pursuing a Diploma in Cybersecurity & Digital Forensics. My passion lies in cybersecurity, especially in hardware hacking and embedded system development, exploring tools such as Flipper Zero and Raspberry Pi.
+          </p>
+
+          <p>
+            As a homelab hobbyist, my setup includes Apache Guacamole for remote access, Windows Server 2022 for robust management, Oracle Linux for stability and power, and Cisco Aironet and 1941 POE for comprehensive network control (VLAN). I prioritize security using OpenVPN for secure connections and leverage Nessus to proactively identify vulnerabilities.
+            
+            Driven by curiosity, I actively contribute to open-source projects on GitHub, continually pushing myself to stay innovative and at the forefront of digital technology.
+          </p>
+        </section>
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/conference.png" alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Leadership </h4>
+
+                <p class="service-item-text">
+                  I'm passionate about leadership, guiding my teams to success with empathy, strategy, and clear communication. I thrive on adaptability and innovative problem-solving, always aiming to inspire. 
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/hacker (2).png" alt="Hacker" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Cyber Offensive and Operational Technology (COPT)</h4>
+
+                <p class="service-item-text">
+                  I specialize in Red Team, with expertise in Applied Cryptography, Secure Back-End Development, Offensive Security, Programming, Network Infrastructure.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/symbole-photoshop-jaune.png" alt="Photoshop" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photoshop</h4>
+
+                <p class="service-item-text">
+                  When I'm not immersed in cybersecurity, you'll find me honing my skills in Photoshop and Lightroom for creative pursuits. Or if im not doing either of those, i'll be working out myself to improve physically.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+
+                <p class="service-item-text">
+                  I make high-quality photos of nature and landscape. I also have been trying out film photography!
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+        <!--
+          - clients
+        -->
+
+        <section class="Company">
+
+          <h3 class="h3 clients-title">Company I have worked and currently with</h3>
+
+          <ul class="clients-list">
+
+            <li class="clients-item">
+              <a href="https://www.income.com.sg" target="_blank">
+                <img src="./assets/images/income.png" alt="income">
+              </a>
+            </li>
+            <li class="clients-item">
+              <a href="https://www.ncs.co/en-sg/" target="_blank">
+                <img src="./assets/images/NCS-logo.png" alt="ncs" style="width: 150px; height: auto;" class="clients-item-img">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Singapore Polytechnic</h4>
+
+              <span>2024 - 2027</span>
+
+              <p class="timeline-text">
+                Diploma in Cybersecurity & Digital Forensics <br>
+                Specialize in Cyber Offensive and Operational Technology (COPT) <br><br>
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Institute of Technical Education</h4>
+
+              <span>2023 - 2024</span>
+
+              <p class="timeline-text">
+                Higher Nitec in Cyber & Network Security <br>  
+              </p>
+
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Institute of Technical Education</h4>
+
+              <span>2021 - 2023</span>
+
+              <p class="timeline-text">
+                Nitec in Infocomm Technology, <br>
+              
+
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Bartley Secondary School</h4>
+
+              <span>2017-2020</span>
+
+              <p class="timeline-text">
+                Achieve 7 points for N-Level <br>
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <img src="./assets/images/working-hours.png" alt="experience icon" width="25">
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">NCS Group</h4>
+
+              <span>Jul 2023 — Nov 2023</span>
+
+              <p class="timeline-text">
+                During my 6-month internship at NCS, I was seconded to PUB, where I was responsible for asset management. My duties included overseeing all assets entering and leaving the company, as well as tracking the location and status of both new and existing devices.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">NTUC Income</h4>
+
+              <span>Jan 2022 — June 2022</span>
+
+              <p class="timeline-text">
+                During my 6-month internship at NTUC Income Center, I worked as an EUC intern in the Service Desk and EUC Operations team. My job scopes included troubleshooting compliance and software-related issues, reimaging devices, and assisting users through email and Teams. I also conducted research on Intune/Endpoint and Azure, and compiled a list of software applications using SCCM. <br><br>
+
+                I gained hands-on experience in using tools such as Endpoint Manager, Azure Storage Containers, and Acronis True Image. Additionally, I developed important soft skills such as adaptability, stress management, and communication. Overall, my internship at NTUC Income has provided me with valuable technical and professional skills that will benefit me in my future career.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Penetration Testing</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Network Security</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Programming (Python/C++)</h5>
+                <data value="75">75%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Red Team Operations</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Photography</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Adobe Photoshop Publicity</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>GitHub Side Projects</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Adobe Photoshop Publicity</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Photography</button>
+              </li>
+              
+              <li class="select-item">
+                <button data-select-item>Github Side Projects</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+            <li class="project-item active" data-filter-item data-category="adobe photoshop publicity">
+              <a href="https://drive.google.com/drive/folders/11WF3-PbmWIusNWYXDPdqXcqWsXqday0J?usp=drive_link">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/ITE CCA Roadshow.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">ITE CCA Roadshow 2021</h3>
+
+                <p class="project-category">Adobe Photoshop Publicity</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="photography">
+              <a href="https://drive.google.com/drive/folders/1jHXodg8QVBd3qbaBuoOKh6E7QwfJ533K?usp=sharing">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/Photography.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">My Photos From Japan</h3>
+
+                <p class="project-category">Photography</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="github side projects">
+              <a href="https://stepsisstuck.github.io/ESP32-Wifi-Hacking/index.html">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/ESP-Wifi-Hacking.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">ESP32 Wifi Hacking with Flipper Zero</h3>
+
+                <p class="project-category">Github Side Projects</p>
+
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="github side projects">
+              <a href="https://stepsisstuck.github.io/REAL-free-image-converter/">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/Image_Convertor.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">REAL Free Image Converter (Work In Progress) </h3>
+
+                <p class="project-category">Github Side Projects</p>
+
+              </a>
+            </li>
+
+
+            <li class="project-item active" data-filter-item data-category="github side projects">
+              <a href="https://github.com/StepSisStuck/API-XSS-Attack">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/XSS-Github.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">XSS Attack Project (Teaching the vulnerabilities about XSS)</h3>
+
+                <p class="project-category">Github Side Projects</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7758676394087!2d103.77497457508292!3d1.3097810617031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1a602ff17c15%3A0xa9545dd23993859e!2sSingapore%20Polytechnic!5e0!3m2!1sen!2ssg!4v1712581681239!5m2!1sen!2ssg"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <div class="contact-info">
+          <p class="contact-title">Email</p>
+          <a href="mailto:luofeng.24@ichat.sp.edu.sg" class="contact-link">luofeng.24@ichat.sp.edu.sg</a>
+        </div>
+        
+        <br>
+        
+        <div class="linkedin-info">
+          <p class="contact-title">LinkedIn</p>
+          <a href="https://www.linkedin.com/in/chan-luo-feng-647425246/" class="contact-link" style="color: #ffffff;" onmouseout="this.style.color='#ffffff';">Luo Feng</a>
+        </div>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <script>
+    'use strict';
+
+    // element toggle function
+    const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+    // sidebar variables
+    const sidebar = document.querySelector("[data-sidebar]");
+    const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+
+    // sidebar toggle functionality for mobile
+    if (sidebarBtn) {
+      sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+    }
+
+    // custom select variables
+    const select = document.querySelector("[data-select]");
+    const selectItems = document.querySelectorAll("[data-select-item]");
+    const selectValue = document.querySelector("[data-selecct-value]");
+    const filterBtn = document.querySelectorAll("[data-filter-btn]");
+
+    if (select) {
+      select.addEventListener("click", function () { elementToggleFunc(this); });
+    }
+
+    // add event in all select items
+    for (let i = 0; i < selectItems.length; i++) {
+      selectItems[i].addEventListener("click", function () {
+        let selectedValue = this.innerText.toLowerCase();
+        if (selectValue) selectValue.innerText = this.innerText;
+        if (select) elementToggleFunc(select);
+        filterFunc(selectedValue);
+      });
+    }
+
+    // filter variables
+    const filterItems = document.querySelectorAll("[data-filter-item]");
+
+    const filterFunc = function (selectedValue) {
+      for (let i = 0; i < filterItems.length; i++) {
+        if (selectedValue === "all") {
+          filterItems[i].classList.add("active");
+        } else if (selectedValue === filterItems[i].dataset.category) {
+          filterItems[i].classList.add("active");
+        } else {
+          filterItems[i].classList.remove("active");
+        }
+      }
+    }
+
+    // add event in all filter button items for large screen
+    let lastClickedBtn = filterBtn[0];
+
+    for (let i = 0; i < filterBtn.length; i++) {
+      filterBtn[i].addEventListener("click", function () {
+        let selectedValue = this.innerText.toLowerCase();
+        if (selectValue) selectValue.innerText = this.innerText;
+        filterFunc(selectedValue);
+
+        if (lastClickedBtn) lastClickedBtn.classList.remove("active");
+        this.classList.add("active");
+        lastClickedBtn = this;
+      });
+    }
+
+    // page navigation variables
+    const navigationLinks = document.querySelectorAll("[data-nav-link]");
+    const pages = document.querySelectorAll("[data-page]");
+
+    // add event to all nav link
+    for (let i = 0; i < navigationLinks.length; i++) {
+      navigationLinks[i].addEventListener("click", function () {
+        for (let j = 0; j < pages.length; j++) {
+          if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
+            pages[j].classList.add("active");
+            navigationLinks[j].classList.add("active");
+            window.scrollTo(0, 0);
+          } else {
+            pages[j].classList.remove("active");
+            navigationLinks[j].classList.remove("active");
+          }
+        }
+      });
+    }
+  </script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
